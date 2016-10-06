@@ -2,9 +2,11 @@ AGR := $(wildcard *.agr)
 EPS := $(patsubst %.agr, out/%.eps, $(AGR))
 PNG := $(patsubst %.agr, out/%.png, $(AGR))
 SVG := $(patsubst %.agr, out/%.svg, $(AGR))
+OUT := $(EPS) $(PNG) $(SVG)
+ARCHIVES := grace-plots.zip grace-plots.tar.gz
 
 .PHONY : all clean
-all : out $(EPS) $(PNG) $(SVG)
+all : out $(OUT)
 
 out :
 	mkdir out
@@ -18,6 +20,12 @@ out/%.png : %.agr
 out/%.svg : %.agr
 	gracebat -hdevice SVG -hardcopy -printfile $@ $<
 
+grace-plots.zip : $(AGR) $(OUT) Makefile
+	zip $@ $^
+
+grace-plots.tar.gz : $(AGR) $(OUT) Makefile
+	tar -czf $@ $^
+
 clean:
-	rm -f $(EPS) $(PNG) $(SVG)
+	rm -f $(OUT) $(ARCHIVES)
 	rmdir out
