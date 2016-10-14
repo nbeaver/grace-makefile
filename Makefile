@@ -11,13 +11,13 @@ all : out $(OUT)
 out :
 	mkdir out
 
-out/%.eps : %.agr
+out/%.eps : %.agr out
 	gracebat -hdevice EPS -hardcopy -printfile $@ $<
 
-out/%.png : %.agr
+out/%.png : %.agr out
 	gracebat -hdevice PNG -hardcopy -printfile $@ $<
 
-out/%.svg : %.agr
+out/%.svg : %.agr out
 	gracebat -hdevice SVG -hardcopy -printfile $@ $<
 
 grace-plots.zip : $(AGR) $(OUT) Makefile
