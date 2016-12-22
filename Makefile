@@ -5,15 +5,12 @@ OUT := $(EPS) $(PNG)
 ARCHIVES := grace-plots.zip grace-plots.tar.gz
 
 .PHONY : all clean
-all : out $(OUT)
+all : $(OUT)
 
-out :
-	mkdir out
-
-out/%.eps : %.agr out
+out/%.eps : %.agr
 	gracebat -hdevice EPS -hardcopy -printfile $@ $<
 
-out/%.png : %.agr out
+out/%.png : %.agr
 	gracebat -hdevice PNG -hardcopy -printfile $@ $<
 
 grace-plots.zip : $(AGR) $(OUT) Makefile
@@ -24,4 +21,3 @@ grace-plots.tar.gz : $(AGR) $(OUT) Makefile
 
 clean:
 	rm -f $(OUT) $(ARCHIVES)
-	rmdir out
