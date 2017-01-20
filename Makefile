@@ -4,8 +4,10 @@ PNG := $(patsubst %.agr, %.png, $(AGR))
 OUT := $(EPS) $(PNG)
 ARCHIVES := grace-plots.zip grace-plots.tar.gz
 
-.PHONY : images clean
+.PHONY : images all clean
 images : $(OUT)
+
+all : $(OUT) $(ARCHIVES)
 
 %.eps : %.agr
 	gracebat -hdevice EPS -hardcopy -printfile $@ $<
