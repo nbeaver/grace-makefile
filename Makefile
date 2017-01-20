@@ -5,15 +5,16 @@ OUT := $(EPS) $(PNG)
 ARCHIVES := grace-plots.zip grace-plots.tar.gz
 
 .PHONY : images all clean
+
 images : $(OUT)
 
 all : $(OUT) $(ARCHIVES)
 
 %.eps : %.agr
-	gracebat -hdevice EPS -hardcopy -printfile $@ $<
+	xmgrace -hdevice EPS -hardcopy -printfile $@ $<
 
 %.png : %.agr
-	gracebat -hdevice PNG -hardcopy -printfile $@ $<
+	xmgrace -hdevice PNG -hardcopy -printfile $@ $<
 
 grace-plots.zip : $(AGR) $(OUT) Makefile
 	zip $@ $^
