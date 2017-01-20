@@ -1,16 +1,16 @@
 AGR := $(wildcard *.agr)
-EPS := $(patsubst %.agr, out/%.eps, $(AGR))
-PNG := $(patsubst %.agr, out/%.png, $(AGR))
+EPS := $(patsubst %.agr, %.eps, $(AGR))
+PNG := $(patsubst %.agr, %.png, $(AGR))
 OUT := $(EPS) $(PNG)
 ARCHIVES := grace-plots.zip grace-plots.tar.gz
 
 .PHONY : all clean
 all : $(OUT)
 
-out/%.eps : %.agr
+%.eps : %.agr
 	gracebat -hdevice EPS -hardcopy -printfile $@ $<
 
-out/%.png : %.agr
+%.png : %.agr
 	gracebat -hdevice PNG -hardcopy -printfile $@ $<
 
 grace-plots.zip : $(AGR) $(OUT) Makefile
