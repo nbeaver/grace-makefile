@@ -1,6 +1,11 @@
 *.eps
-*.png
+*.gmf
+*.jpg
+*.mif
 *.pdf
+*.png
+*.pnm
 *.ps
+*.svg
 *.tar.gz
 *.zip
