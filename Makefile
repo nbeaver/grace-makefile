@@ -2,7 +2,8 @@ AGR := $(wildcard *.agr)
 EPS := $(patsubst %.agr, %.eps, $(AGR))
 PNG := $(patsubst %.agr, %.png, $(AGR))
 PS := $(patsubst %.agr, %.ps, $(AGR))
-IMAGES := $(EPS) $(PNG) $(PS)
+PDF := $(patsubst %.agr, %.pdf, $(AGR))
+IMAGES := $(EPS) $(PNG) $(PS) $(PDF)
 ARCHIVES := grace-plots.zip grace-plots.tar.gz
 
 .PHONY : images all clean
@@ -13,6 +14,12 @@ all : $(IMAGES) $(ARCHIVES)
 
 %.ps : %.agr
 	xmgrace -hdevice PostScript -hardcopy -printfile $@ $<
+
+%.pdf : %.ps
+	gs -dBATCH -dNOPAUSE \
+		-sDEVICE=pdfwrite \
+		-dEmbedAllFonts=true \
+		-sOutputFile=$@ $<
 
 %.eps : %.agr
 	xmgrace -hdevice EPS -hardcopy -printfile $@ $<
