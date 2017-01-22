@@ -19,7 +19,7 @@ Usage::
 The Makefile runs ``xmgrace`` to generate these vector formats:
 
 - `Encapsulated PostScript`_
-- `Maker Intrechange Format`_
+- `Maker Interchange Format`_
 - `PostScript`_ and PDF via `GhostScript`_
 - `Scalable Vector Graphics`_
 
