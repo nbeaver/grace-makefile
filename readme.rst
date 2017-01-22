@@ -32,7 +32,7 @@ The Makefile runs ``xmgrace`` to generate these vector formats:
 It also generates these raster formats:
 
 - `JPEG`_
-- `Portable Network Graphics`
+- `Portable Network Graphics`_
 - `Netpbm`_
 
 .. _Portable Network Graphics: https://en.wikipedia.org/wiki/Portable_Network_Graphics
