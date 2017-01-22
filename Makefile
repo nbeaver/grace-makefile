@@ -47,10 +47,10 @@ all : $(IMAGES) $(ARCHIVES)
 %.svg : %.agr
 	xmgrace -hdevice SVG -hardcopy -printfile $@ $<
 
-grace-plots.zip : $(AGR) $(OUT) Makefile
+grace-plots.zip : $(AGR) $(IMAGES) Makefile
 	zip $@ $^
 
-grace-plots.tar.gz : $(AGR) $(OUT) Makefile
+grace-plots.tar.gz : $(AGR) $(IMAGES) Makefile
 	tar -czf $@ $^
 
 clean:
