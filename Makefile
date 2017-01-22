@@ -18,7 +18,7 @@ images : $(IMAGES)
 all : $(IMAGES) $(ARCHIVES)
 
 %.ps : %.agr
-	xmgrace -hdevice PostScript -hardcopy -printfile $@ $<
+	xmgrace -printfile $@ -hdevice PostScript -hardcopy $<
 
 %.pdf : %.ps
 	gs -dBATCH -dNOPAUSE \
@@ -27,25 +27,25 @@ all : $(IMAGES) $(ARCHIVES)
 		-sOutputFile=$@ $<
 
 %.eps : %.agr
-	xmgrace -hdevice EPS -hardcopy -printfile $@ $<
+	xmgrace -printfile $@ -hdevice EPS -hardcopy $<
 
 %.gmf : %.agr
-	xmgrace -hdevice Metafile -hardcopy -printfile $@ $<
+	xmgrace -printfile $@ -hdevice Metafile -hardcopy $<
 
 %.jpg : %.agr
-	xmgrace -hdevice JPEG -hardcopy -printfile $@ $<
+	xmgrace -printfile $@ -hdevice JPEG -hardcopy $<
 
 %.mif : %.agr
-	xmgrace -hdevice MIF -hardcopy -printfile $@ $<
+	xmgrace -printfile $@ -hdevice MIF -hardcopy $<
 
 %.png : %.agr
-	xmgrace -hdevice PNG -hardcopy -printfile $@ $<
+	xmgrace -printfile $@ -hdevice PNG -hardcopy $<
 
 %.pnm : %.agr
-	xmgrace -hdevice PNM -hardcopy -printfile $@ $<
+	xmgrace -printfile $@ -hdevice PNM -hardcopy $<
 
 %.svg : %.agr
-	xmgrace -hdevice SVG -hardcopy -printfile $@ $<
+	xmgrace -printfile $@ -hdevice SVG -hardcopy $<
 
 grace-plots.zip : $(AGR) $(IMAGES) Makefile
 	zip $@ $^
