@@ -54,4 +54,4 @@ grace-plots.tar.gz : $(AGR) $(IMAGES) Makefile
 	tar -czf $@ $^
 
 clean:
-	rm -f $(IMAGES) $(ARCHIVES)
+	rm -f -- $(IMAGES) $(ARCHIVES)
