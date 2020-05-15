@@ -11,10 +11,10 @@ SVG := $(patsubst %.agr, %.svg, $(AGR))
 IMAGES := $(EPS) $(GMF) $(JPEG) $(MIF) $(PNG) $(PNM) $(PS) $(PDF) $(SVG)
 ARCHIVES := grace-plots.zip grace-plots.tar.gz
 
-.PHONY : images all clean
-
+.PHONY : images
 images : $(IMAGES)
 
+.PHONY : all
 all : $(IMAGES) $(ARCHIVES)
 
 %.ps : %.agr
@@ -53,5 +53,6 @@ grace-plots.zip : $(AGR) $(IMAGES) Makefile
 grace-plots.tar.gz : $(AGR) $(IMAGES) Makefile
 	tar -czf $@ $^
 
+.PHONY : clean
 clean:
 	rm -f -- $(IMAGES) $(ARCHIVES)
